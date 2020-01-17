@@ -1,0 +1,76 @@
+1. List all your running processes  (ps with more info from man)
+
+   Command: ps -aux
+
+   Output:
+
+   root      2969  0.0  0.0      0     0 ?        I    12:00   0:00 [kworker/6:0-ev
+   phuong    2982  0.0  0.0  31224  4728 pts/1    Ss   12:00   0:00 bash
+   root      2990  0.0  0.0      0     0 ?        I    12:00   0:00 [kworker/u16:3]
+   phuong    2991  2.6  1.6 1142144 130768 pts/1  Sl+  12:00   0:00 /usr/share/typo
+   phuong    2994  0.0  0.4 375368 39056 pts/1    S+   12:00   0:00 /usr/share/typo
+   phuong    2996  0.0  0.0 375368  6468 pts/1    S+   12:00   0:00 /usr/share/typo
+   phuong    3023  1.3  0.8 514188 69696 pts/1    Sl+  12:00   0:00 /usr/share/typo
+   phuong    3035  6.3  1.8 1001416 151644 pts/1  Sl+  12:00   0:01 /usr/share/typo
+   phuong    3098  0.0  0.0  31224  4852 pts/0    Ss   12:01   0:00 bash
+   phuong    3107  0.0  0.0  48308  3596 pts/0    R+   12:01   0:00 ps -aux
+
+   
+
+2. Start a new process, gnome-calculator for example
+
+   Command: gnome-calculator
+
+   Output: (gnome - calculator application)
+
+   Find process id of your newly-created process (ps with grep)
+
+   Command:  ps -aux |grep "gnome-calculator"
+
+   Output: 
+
+   phuong    3350  0.9  0.5 795796 40252 pts/0    Sl+  12:06   0:00 gnome-calculator
+   phuong    3522  0.0  0.0  23072  1148 pts/2    S+   12:07   0:00 grep --color=auto gnome-calculator
+
+   
+
+3. Show its process status (see content of /proc//status)
+
+   Command: cat /proc/3350/status
+
+   Output:
+
+   Name:	gnome-calculato
+   Umask:	0022
+   State:	S (sleeping)
+   Tgid:	3350
+   Ngid:	0
+   Pid:	3350
+   PPid:	3098
+   TracerPid:	0
+   Uid:	1000	1000	1000	1000
+   Gid:	1000	1000	1000	1000
+
+   
+
+4. Pause it (kill with signal STOP)
+
+   Command: kill -STOP 3350
+
+   Output: (Check the status and the state change from S(sleeping) to T(stopped))
+
+   
+
+5. Resume it (kill with signal CONT)
+
+   Command: kill -CONT 3350
+
+   Output: (Check the status and the state change from T(stopped) to S(sleeping))
+
+   
+
+6. Terminate it (kill with signal KILL)
+
+   Command: kill -KILL 3350
+
+   Output: (The gnome-calculator turn off)
