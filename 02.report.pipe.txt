@@ -1,0 +1,41 @@
+1. List all files in current directory containing "list" in their names (filter with grep)
+
+Command: ls |grep "list"
+
+Output: 
+
+./.config/mimeapps.list
+
+./.local/share/applications/mimeapps.list
+./.local/share/zeitgeist/fts.index/postlist.glass
+./.local/share/zeitgeist/fts.index/termlist.glass
+
+2. Count how many lines that /etc/passwd has (use wc)
+
+Command: wc /etc/passwd
+
+Output:   41   69 2407 /etc/passwd
+
+(41 lines, 69 words, 2407 characters)
+
+3. Check how much memory that your machine has, not free memory (use free)
+
+Command: free
+
+Output: 
+
+              total        used        free      shared  buff/cache   available
+Mem:        8007536     1821036     4437104      438272     1749396     5488264
+Swap:      15625212           0    15625212
+
+4. Find how many logical core that your CPU has (see /proc/cpuinfo)
+
+Command: cat /proc/cpuinfo | grep processor | wc -l
+
+Output: 8
+
+5. Count how many .jpg files that you have in your photo directory (use find)
+
+Command: find . -name "*jpg" | wc -l
+
+Output: 26
