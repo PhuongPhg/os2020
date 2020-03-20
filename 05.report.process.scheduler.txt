@@ -1,0 +1,17 @@
+Show number of context switches for process systemd
+
+
+
+Using /proc/sched_debug
+
+Command: $ cat /proc/sched_debug |grep systemd | awk '{p+=$5} END {printf "%.0f\n", p}'
+
+Output: 227714
+
+
+
+Using /proc/<processId>/sched 
+
+Command: $ cat /proc/1/sched|grep switch | awk 'NR==1 { print $1, $2, $3}'
+
+Output: nr_switches : 115412
