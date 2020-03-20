@@ -1,0 +1,18 @@
+Show number of threads for process firefox
+
+
+
+Using ps with NLWP 
+
+
+
+Command: ps -A |grep firefox
+
+Output: 1850 tty2     00:04:00 firefox
+
+Command: ps -o nlwp 1850
+
+Output: 
+
+NLWP
+  77
